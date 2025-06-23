@@ -3,203 +3,263 @@
 <head>
   <meta charset="UTF-8">
   <title>Dessert Recipes</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-  * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #fffaf5, #fef5ef);
-  color: #333;
-}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #fffaf5, #fef5ef);
+      color: #333;
+    }
 
-/* Header and Navigation */
-header {
-  background-color: #e3a8ce;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+    header {
+      background-color: #e3a8ce;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 10;
+    }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: white;
-}
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white;
+    }
 
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 25px;
-  position: relative;
-}
+    nav {
+      display: flex;
+    }
 
-nav ul li {
-  position: relative;
-}
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      align-items: center;
+    }
 
-nav ul li a {
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-  padding: 8px 12px;
-  display: inline-block;
-  transition: color 0.3s;
-}
+    nav ul li {
+      position: relative;
+    }
 
-nav ul li a:hover {
-  color: #4e342e;
-}
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      padding: 8px 12px;
+      transition: color 0.3s;
+      display: inline-block;
+    }
 
-/* Dropdown Fix */
-nav ul li:hover > .dropdown-content,
-nav ul li .dropdown-content:hover {
-  display: block;
-}
+    nav ul li a:hover {
+      color: #4e342e;
+    }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%; /* aligns right below the nav item */
-  left: 0;
-  background-color: #fff7f0;
-  min-width: 180px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  z-index: 99;
-}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff7f0;
+      min-width: 180px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 99;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
 
-.dropdown-content a {
-  display: block;
-  padding: 10px 15px;
-  color: #333;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: background 0.3s;
-}
+    .dropdown-content a {
+      display: block;
+      padding: 10px 15px;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
 
-.dropdown-content a:hover {
-  background-color: #ffd7c2;
-}
+    .dropdown-content a:hover {
+      background-color: #ffd7c2;
+    }
 
-/* Recipe Section */
-.recipes-section {
-  padding: 50px 20px;
-  text-align: center;
-  background-color: #fff5f0;
-}
+    /* Desktop: show dropdown on hover */
+    @media (min-width: 769px) {
+      .dropdown:hover .dropdown-content {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.recipes-section h2 {
-  font-size: 2.5rem;
-  color: #d1495b;
-  margin-bottom: 30px;
-}
+    .recipes-section {
+      padding: 50px 20px;
+      text-align: center;
+      background-color: #fff5f0;
+    }
 
-.recipe-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  justify-items: center;
-  padding: 0 20px;
-}
+    .recipes-section h2 {
+      font-size: 2.5rem;
+      color: #d1495b;
+      margin-bottom: 30px;
+    }
 
-/* Recipe Cards */
-.recipe-card {
-  background-color: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  width: 100%;
-  max-width: 250px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  min-height: 320px;
-  overflow: hidden;
-}
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      justify-items: center;
+      padding: 0 20px;
+    }
 
-.recipe-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
+    .recipe-card {
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 250px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      min-height: 320px;
+      overflow: hidden;
+    }
 
-.recipe-card img {
-  width: 100%;
-  height: auto;
-  max-height: 160px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
+    .recipe-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
 
-.recipe-card h3 {
-  font-size: 1.2rem;
-  color: #d1495b;
-  margin-bottom: 10px;
-}
+    .recipe-card img {
+      width: 100%;
+      height: auto;
+      max-height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
 
-.recipe-card p {
-  font-size: 0.9rem;
-  color: #555;
-}
+    .recipe-card h3 {
+      font-size: 1.2rem;
+      color: #d1495b;
+      margin-bottom: 10px;
+    }
 
-/* Hover Panel */
-.dropdown-panel {
-  position: absolute;
-  bottom: -120px;
-  left: 0;
-  width: 100%;
-  padding: 15px;
-  background-color: #ffe9dd;
-  color: #333;
-  font-size: 0.85rem;
-  border-top: 1px solid #f7b267;
-  transition: bottom 0.4s ease;
-}
+    .recipe-card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
 
-.recipe-card:hover .dropdown-panel {
-  bottom: 0;
-}
+    .dropdown-panel {
+      position: absolute;
+      bottom: -120px;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background-color: #ffe9dd;
+      color: #333;
+      font-size: 0.85rem;
+      border-top: 1px solid #f7b267;
+      transition: bottom 0.4s ease;
+    }
 
-.dropdown-panel a {
-  display: inline-block;
-  margin-top: 10px;
-  text-decoration: none;
-  color: #d1495b;
-  font-weight: bold;
-}
+    .recipe-card:hover .dropdown-panel {
+      bottom: 0;
+    }
 
-.dropdown-panel a:hover {
-  text-decoration: underline;
-}
-</style>
+    .dropdown-panel a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #d1495b;
+      font-weight: bold;
+    }
+
+    .dropdown-panel a:hover {
+      text-decoration: underline;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #e3a8ce;
+        padding: 20px 0;
+        z-index: 1000;
+      }
+
+      nav.active {
+        display: block;
+      }
+
+      .nav-list {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .dropdown-content {
+        position: static;
+        display: none;
+        opacity: 1;
+        transform: none;
+        box-shadow: none;
+        background-color: transparent;
+        transition: none;
+      }
+
+      .dropdown-content.show {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <header>
-  <div class="logo">Recipedia</div>
-  <nav>
-    <ul class="nav-list">
-      <li><a href="home.html">Home</a></li>
-      <li class="dropdown">
-        <a href="#">Recipes ▾</a>
-        <div class="dropdown-content">
-          <a href="indian.html">Indian Food</a>
-          <a href="middleeast.html">Middle Eastern Food</a>
-          <a href="dessert.html">Dessert</a>
-        </div>
-      </li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+    <div class="logo">Recipedia</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <nav id="navbar">
+      <ul class="nav-list">
+        <li><a href="home.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#" onclick="toggleDropdown(event, this)">Recipes ▾</a>
+          <div class="dropdown-content" id="recipesDropdown">
+            <a href="indian.html">Indian Food</a>
+            <a href="middleeast.html">Middle Eastern Food</a>
+            <a href="dessert.html">Dessert</a>
+          </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <section class="recipes-section">
     <h2>Dessert Recipes</h2>
@@ -247,5 +307,36 @@ nav ul li .dropdown-content:hover {
 
     </div>
   </section>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navbar").classList.toggle("active");
+    }
+
+    function toggleDropdown(event, link) {
+      if (window.innerWidth <= 768) {
+        event.preventDefault();
+        const dropdown = link.nextElementSibling;
+
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown-content').forEach(el => {
+          if (el !== dropdown) el.classList.remove("show");
+        });
+
+        // Toggle current
+        dropdown.classList.toggle("show");
+      }
+    }
+
+    // Close dropdown if clicking outside
+    window.addEventListener("click", function (event) {
+      if (!event.target.closest(".dropdown")) {
+        document.querySelectorAll(".dropdown-content").forEach(el => {
+          el.classList.remove("show");
+        });
+      }
+    });
+  </script>
+
 </body>
 </html>

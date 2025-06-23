@@ -166,7 +166,12 @@
     .recipe-card:hover .dropdown-panel {
       bottom: 0;
     }
-
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+    }
     .dropdown-panel a {
       display: inline-block;
       margin-top: 10px;
@@ -178,6 +183,41 @@
     .dropdown-panel a:hover {
       text-decoration: underline;
     }
+    @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #e3a8ce;
+    padding: 20px 0;
+    z-index: 1000;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .dropdown-content {
+    position: static;
+    display: none !important;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: none !important;
+  }
+}
 
     /* Responsive Fixes */
     @media (max-width: 768px) {
@@ -212,7 +252,9 @@
 
   <header>
     <div class="logo">Recipedia</div>
-    <nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <nav id="navbar">
       <ul class="nav-list">
         <li><a href="home.html">Home</a></li>
         <li class="dropdown">
@@ -317,6 +359,12 @@
 
     </div>
   </section>
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("navbar");
+    nav.classList.toggle("active");
+  }
+</script>
 
 </body>
 </html>

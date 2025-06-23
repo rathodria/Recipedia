@@ -23,6 +23,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       position: relative;
       z-index: 10;
@@ -40,6 +41,7 @@
       gap: 25px;
       position: relative;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     nav ul li {
@@ -90,7 +92,7 @@
     }
 
     .recipes-section {
-      padding: 50px 20px;
+      padding: 40px 20px;
       text-align: center;
       background-color: #fff5f0;
     }
@@ -176,6 +178,34 @@
     .dropdown-panel a:hover {
       text-decoration: underline;
     }
+
+    /* Responsive Fixes */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        padding-top: 10px;
+      }
+
+      .recipes-section h2 {
+        font-size: 2rem;
+      }
+
+      .recipe-card {
+        max-width: 90%;
+      }
+
+      .dropdown-panel {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -203,6 +233,7 @@
     <h2>Indian Recipes</h2>
     <div class="recipe-grid">
 
+      <!-- RECIPE CARDS START -->
       <div class="recipe-card">
         <img src="photo/panner.jpeg" alt="Paneer Tikka Masala">
         <h3>Paneer Tikka Masala</h3>
@@ -282,6 +313,7 @@
           <a href="daaldhokli.html">View Full Recipe →</a>
         </div>
       </div>
+    
 
     </div>
   </section>

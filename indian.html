@@ -192,50 +192,49 @@
   }
 
   @media (max-width: 768px) {
-    .hamburger {
-      display: block;
-    }
-
-    nav {
-      display: none;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background-color: #e3a8ce;
-      padding: 20px 0;
-      z-index: 1000;
-    }
-
-    nav.active {
-      display: block;
-    }
-
-    .nav-list {
-      flex-direction: column;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: none;
-    }
-
-    .dropdown-content {
-      position: static;
-      display: none;
-      opacity: 1;
-      transform: none;
-      box-shadow: none;
-      background-color: transparent;
-      transition: none;
-    }
-
-    .dropdown-content.show {
-      display: flex;
-      flex-direction: column;
-    }
+  .hamburger {
+    display: block;
   }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #e3a8ce;
+    padding: 20px 0;
+    z-index: 1000;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  /* Removed dropdown:hover .dropdown-content */
+  
+  .dropdown-content {
+    position: static;
+    display: none;
+    opacity: 1;
+    transform: none;
+    box-shadow: none;
+    background-color: transparent;
+    transition: none;
+  }
+
+  .dropdown-content.show {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 </style>
 
 </head>

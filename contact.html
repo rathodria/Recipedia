@@ -84,6 +84,14 @@
         padding: 20px;
       }
     }
+
+    /* Desktop dropdown fix */
+    @media (min-width: 769px) {
+      .dropdown:hover .dropdown-content,
+      .dropdown-content:hover {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
@@ -96,7 +104,7 @@
         <ul class="nav-links">
           <li><a href="home.html">Home</a></li>
           <li class="dropdown">
-            <span class="dropdown-toggle">Recipes ▾</span>
+            <span class="dropdown-toggle" onclick="toggleDropdown(event)">Recipes ▾</span>
             <ul class="dropdown-content">
               <li><a href="indian.html">Indian</a></li>
               <li><a href="middleeast.html">MiddleEastern</a></li>
@@ -138,6 +146,27 @@
 
     hamburger.addEventListener('click', () => {
       mobileNav.classList.toggle('active');
+    });
+
+    function toggleDropdown(event) {
+      if (window.innerWidth <= 768) {
+        event.stopPropagation();
+        const dropdown = event.target.nextElementSibling;
+        dropdown.classList.toggle('show');
+
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown-content').forEach(el => {
+          if (el !== dropdown) el.classList.remove('show');
+        });
+      }
+    }
+
+    window.addEventListener('click', function (event) {
+      if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-content').forEach(el => {
+          el.classList.remove('show');
+        });
+      }
     });
   </script>
 

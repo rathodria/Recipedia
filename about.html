@@ -80,6 +80,14 @@
         width: 90%;
       }
     }
+
+    /* Desktop dropdown fix */
+    @media (min-width: 769px) {
+      .dropdown:hover .dropdown-content,
+      .dropdown-content:hover {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
@@ -92,7 +100,7 @@
         <ul class="nav-links">
           <li><a href="home.html">Home</a></li>
           <li class="dropdown">
-            <span class="dropdown-toggle">Recipes ▾</span>
+            <span class="dropdown-toggle" onclick="toggleDropdown(event)">Recipes ▾</span>
             <ul class="dropdown-content">
               <li><a href="indian.html">Indian</a></li>
               <li><a href="middleeast.html">MiddleEastern</a></li>
@@ -109,7 +117,7 @@
   <section class="about-section">
     <h1>About Recipedia</h1>
     <p>
-      At Recipedia, food is more than sustenance — it's a story. Born from a love of rich spices, heartfelt memories, and the art of home cooking, Ricooks is your cozy corner of the internet to discover recipes that feel like home. Whether it's traditional Indian curries, Middle Eastern feasts, or delightful desserts, our goal is to bring cultural comfort to your kitchen.
+      At Recipedia, food is more than sustenance — it's a story. Born from a love of rich spices, heartfelt memories, and the art of home cooking, Recipedia is your cozy corner of the internet to discover recipes that feel like home. Whether it's traditional Indian curries, Middle Eastern feasts, or delightful desserts, our goal is to bring cultural comfort to your kitchen.
     </p>
 
     <div class="about-team">
@@ -117,6 +125,7 @@
         <!-- <img src="images/chef1.jpg" alt="Team Member"> -->
         <h3>Riya Rathod</h3>
         <p>Founder & Culinary Curator</p>
+      </div>
     </div>
   </section>
 
@@ -130,6 +139,29 @@
 
     hamburger.addEventListener('click', () => {
       mobileNav.classList.toggle('active');
+    });
+
+    function toggleDropdown(event) {
+      // Only trigger on mobile
+      if (window.innerWidth <= 768) {
+        event.stopPropagation();
+        const dropdown = event.target.nextElementSibling;
+        dropdown.classList.toggle('show');
+
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown-content').forEach(el => {
+          if (el !== dropdown) el.classList.remove('show');
+        });
+      }
+    }
+
+    // Close dropdowns when clicking outside
+    window.addEventListener('click', function (event) {
+      if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-content').forEach(el => {
+          el.classList.remove('show');
+        });
+      }
     });
   </script>
 </body>

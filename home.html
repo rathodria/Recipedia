@@ -12,25 +12,24 @@
     <nav class="navbar">
       <div class="logo">Recipedia</div>
 
-     <div class="hamburger" id="hamburger">&#9776;</div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
 
       <!-- Navigation Links -->
       <div id="mobileNav" class="nav-links-wrapper">
-  <ul class="nav-links">
-    <li><a href="home.html">Home</a></li>
-    <li class="dropdown">
-      <span class="dropdown-toggle">Recipes ▾</span>
-      <ul class="dropdown-content">
-        <li><a href="indian.html">Indian</a></li>
-        <li><a href="middleeast.html">MiddleEastern</a></li>
-        <li><a href="dessert.html">Desserts</a></li>
-      </ul>
-    </li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</div>
-
+        <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li class="dropdown">
+            <span class="dropdown-toggle">Recipes ▾</span>
+            <ul class="dropdown-content">
+              <li><a href="indian.html">Indian</a></li>
+              <li><a href="middleeast.html">Middle Eastern</a></li>
+              <li><a href="dessert.html">Desserts</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </nav>
   </header>
 
@@ -44,17 +43,14 @@
     <h2>Our Collections</h2>
     <div class="cards">
       <div class="card">
-        <!-- <img src="photo/backgrnd.avif" alt="Indian Food" /> -->
         <h3>Indian</h3>
         <p>Traditional spices, rich flavors, and timeless recipes.</p>
       </div>
       <div class="card">
-        <!-- <img src="images/middleeast.png" alt="Middle Eastern Food" /> -->
         <h3>Middle Eastern</h3>
         <p>Hummus, shawarma, and soul-satisfying mezze.</p>
       </div>
       <div class="card">
-        <!-- <img src="images/dessert.png" alt="Desserts" /> -->
         <h3>Desserts</h3>
         <p>Sugar, spice, and everything nice. Sweet endings await.</p>
       </div>
@@ -64,14 +60,40 @@
   <footer>
     &copy; 2025 Ricooks. Crafted with taste and love.
   </footer>
-  <script>
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobileNav');
 
-  hamburger.addEventListener('click', () => {
-    mobileNav.classList.toggle('active');
-  });
-</script>
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+    });
+
+    // Toggle dropdown on mobile
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const dropdownContent = this.nextElementSibling;
+          dropdownContent.classList.toggle('show');
+
+          // Close other dropdowns
+          document.querySelectorAll('.dropdown-content').forEach(dc => {
+            if (dc !== dropdownContent) dc.classList.remove('show');
+          });
+        }
+      });
+    });
+
+    // Close dropdowns on outside click
+    window.addEventListener('click', function (event) {
+      if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-content').forEach(el => {
+          el.classList.remove('show');
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

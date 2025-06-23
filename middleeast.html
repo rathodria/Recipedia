@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Middle Eastern Recipes</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #fffaf5, #fef5ef);
+  color: #333;
+}
+
+header {
+  background-color: #e3a8ce;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Navigation Styling */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  position: relative;
+  align-items: center;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: color 0.3s;
+  display: inline-block;
+}
+
+/* Hover styling */
+nav ul li a:hover {
+  color: #4e342e;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff7f0;
+  min-width: 180px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  flex-direction: column;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.dropdown-content a:hover {
+  background-color: #ffd7c2;
+}
+
+/* Ensure dropdown stays open while hovering */
+nav ul li:hover > .dropdown-content,
+.dropdown-content:hover {
+  display: flex;
+}
+
+/* Recipe Section */
+.recipes-section {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #fff5f0;
+}
+
+.recipes-section h2 {
+  font-size: 2.5rem;
+  color: #d1495b;
+  margin-bottom: 30px;
+}
+
+/* Grid for Recipes */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-items: center;
+  padding: 0 20px;
+}
+
+/* Recipe Card Styling */
+.recipe-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 250px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: auto;
+  max-height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.recipe-card h3 {
+  font-size: 1.2rem;
+  color: #d1495b;
+  margin-bottom: 10px;
+}
+
+.recipe-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Recipe Info Panel on Hover */
+.dropdown-panel {
+  position: absolute;
+  bottom: -120px;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  background-color: #ffe9dd;
+  color: #333;
+  font-size: 0.85rem;
+  border-top: 1px solid #f7b267;
+  transition: bottom 0.4s ease;
+}
+
+.recipe-card:hover .dropdown-panel {
+  bottom: 0;
+}
+
+.dropdown-panel a {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #d1495b;
+  font-weight: bold;
+}
+
+.dropdown-panel a:hover {
+  text-decoration: underline;
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+  <div class="logo">Recipedia</div>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="home.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#">Recipes ▾</a>
+        <div class="dropdown-content">
+          <a href="indian.html">Indian Food</a>
+          <a href="middleeast.html">Middle Eastern Food</a>
+          <a href="dessert.html">Dessert</a>
+        </div>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <section class="recipes-section">
+    <h2>Middle Eastern Recipes</h2>
+    <div class="recipe-grid">
+
+      <div class="recipe-card">
+        <img src="photo/falafel.jpeg" alt="Falafel">
+        <h3>Falafel</h3>
+        <p>Crunchy, deep-fried chickpea balls.</p>
+        <div class="dropdown-panel">
+          Made from chickpeas, herbs, and spices. <br>
+          <a href="falafel.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/hummus.jpeg" alt="Hummus">
+        <h3>Hummus</h3>
+        <p>Classic chickpea-tahini dip.</p>
+        <div class="dropdown-panel">
+          Smooth blend of chickpeas, tahini, garlic & lemon. <br>
+          <a href="hummus.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/fatt.jpg" alt="Fattoush">
+        <h3>Fattoush</h3>
+        <p>Levantine salad with toasted pita.</p>
+        <div class="dropdown-panel">
+          Fresh greens, radish, and sumac vinaigrette. <br>
+          <a href="fattoush.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/shawarma.jpeg" alt="Shawarma">
+        <h3>Shawarma</h3>
+        <p>Spiced meat rolled in pita bread.</p>
+        <div class="dropdown-panel">
+          Marinated meat, garlic sauce, pickles & veggies. <br>
+          <a href="shawarma.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/pitabread.jpeg" alt="Pita Bread">
+        <h3>Pita Bread</h3>
+        <p>Soft flatbread with a pocket.</p>
+        <div class="dropdown-panel">
+          Great for stuffing with hummus or falafel. <br>
+          <a href="pitabread.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/baba.png" alt="Baba Ganoush">
+        <h3>Baba Ganoush</h3>
+        <p>Smoky eggplant-based dip.</p>
+        <div class="dropdown-panel">
+          Made with roasted eggplant, tahini & garlic. <br>
+          <a href="baba.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>

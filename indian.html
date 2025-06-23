@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Indian Recipes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #fffaf5, #fef5ef);
+      color: #333;
+    }
+
+    header {
+      background-color: #e3a8ce;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      position: relative;
+      align-items: center;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      padding: 8px 12px;
+      transition: color 0.3s;
+      display: inline-block;
+    }
+
+    nav ul li a:hover {
+      color: #4e342e;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff7f0;
+      min-width: 180px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      flex-direction: column;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 15px;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ffd7c2;
+    }
+
+    nav ul li:hover > .dropdown-content,
+    .dropdown-content:hover {
+      display: flex;
+    }
+
+    .recipes-section {
+      padding: 50px 20px;
+      text-align: center;
+      background-color: #fff5f0;
+    }
+
+    .recipes-section h2 {
+      font-size: 2.5rem;
+      color: #d1495b;
+      margin-bottom: 30px;
+    }
+
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      justify-items: center;
+      padding: 0 20px;
+    }
+
+    .recipe-card {
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 250px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      min-height: 320px;
+      overflow: hidden;
+    }
+
+    .recipe-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .recipe-card img {
+      width: 100%;
+      height: auto;
+      max-height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .recipe-card h3 {
+      font-size: 1.2rem;
+      color: #d1495b;
+      margin-bottom: 10px;
+    }
+
+    .recipe-card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .dropdown-panel {
+      position: absolute;
+      bottom: -120px;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background-color: #ffe9dd;
+      color: #333;
+      font-size: 0.85rem;
+      border-top: 1px solid #f7b267;
+      transition: bottom 0.4s ease;
+    }
+
+    .recipe-card:hover .dropdown-panel {
+      bottom: 0;
+    }
+
+    .dropdown-panel a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #d1495b;
+      font-weight: bold;
+    }
+
+    .dropdown-panel a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Recipedia</div>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="home.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Recipes ▾</a>
+          <div class="dropdown-content">
+            <a href="indian.html">Indian Food</a>
+            <a href="middleeast.html">Middle Eastern Food</a>
+            <a href="dessert.html">Dessert</a>
+          </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="recipes-section">
+    <h2>Indian Recipes</h2>
+    <div class="recipe-grid">
+
+      <div class="recipe-card">
+        <img src="photo/panner.jpeg" alt="Paneer Tikka Masala">
+        <h3>Paneer Tikka Masala</h3>
+        <p>Grilled paneer in spicy tomato gravy.</p>
+        <div class="dropdown-panel">
+          A rich and creamy North Indian dish with spices. <br>
+          <a href="paneertikka.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/pavbhaji.png" alt="Pav Bhaji">
+        <h3>Pav Bhaji</h3>
+        <p>Mumbai street favorite with buttery buns.</p>
+        <div class="dropdown-panel">
+          Spicy mashed vegetables with buttered pav. <br>
+          <a href="pavbhaji.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/panipuri2.png" alt="Pani Puri">
+        <h3>Pani Puri</h3>
+        <p>Crispy puris with tangy filling.</p>
+        <div class="dropdown-panel">
+          Stuffed with potato, chickpeas and spicy water. <br>
+          <a href="panipuri.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/khaman.jpg" alt="Khaman">
+        <h3>Khaman</h3>
+        <p>Soft, fluffy Gujarati snack.</p>
+        <div class="dropdown-panel">
+          Made from gram flour, perfect for tea time. <br>
+          <a href="khaman.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/dosa.png" alt="Masala Dosa">
+        <h3>Masala Dosa</h3>
+        <p>South Indian crepe with spiced potato.</p>
+        <div class="dropdown-panel">
+          Served with chutney and sambar. <br>
+          <a href="dosa.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/dalmakhani.webp" alt="Dal Makhni">
+        <h3>Dal Makhni</h3>
+        <p>Rich lentil curry with butter and cream.</p>
+        <div class="dropdown-panel">
+          Punjabi comfort food. <br>
+          <a href="daalmakhni.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/basundi.png" alt="Rabdi">
+        <h3>Rabdi</h3>
+        <p>Sweet thickened milk dessert.</p>
+        <div class="dropdown-panel">
+          Flavored with cardamom, saffron, and garnished with nuts. <br>
+          <a href="rabdi.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="photo/daal.png" alt="Daal Dhokli">
+        <h3>Daal Dhokli</h3>
+        <p>Comforting one-pot lentil and wheat dumpling dish.</p>
+        <div class="dropdown-panel">
+          Slow-cooked tuvar dal simmered with spiced wheat flour strips. <br>
+          <a href="daaldhokli.html">View Full Recipe →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

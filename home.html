@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recipedia | Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">Recipedia</div>
+
+     <div class="hamburger" id="hamburger">&#9776;</div>
+
+      <!-- Navigation Links -->
+      <div id="mobileNav" class="nav-links-wrapper">
+  <ul class="nav-links">
+    <li><a href="home.html">Home</a></li>
+    <li class="dropdown">
+      <span class="dropdown-toggle">Recipes ▾</span>
+      <ul class="dropdown-content">
+        <li><a href="indian.html">Indian</a></li>
+        <li><a href="middleeast.html">MiddleEastern</a></li>
+        <li><a href="dessert.html">Desserts</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+    </nav>
+  </header>
+
+  <section class="intro">
+    <h1>Delight in Every Bite</h1>
+    <p class="subtext">Explore handcrafted recipes inspired by culture, color, and comfort.</p>
+    <span class="highlight">Crafted with love, culture, and spice.</span>
+  </section>
+
+  <section class="collections">
+    <h2>Our Collections</h2>
+    <div class="cards">
+      <div class="card">
+        <!-- <img src="photo/backgrnd.avif" alt="Indian Food" /> -->
+        <h3>Indian</h3>
+        <p>Traditional spices, rich flavors, and timeless recipes.</p>
+      </div>
+      <div class="card">
+        <!-- <img src="images/middleeast.png" alt="Middle Eastern Food" /> -->
+        <h3>Middle Eastern</h3>
+        <p>Hummus, shawarma, and soul-satisfying mezze.</p>
+      </div>
+      <div class="card">
+        <!-- <img src="images/dessert.png" alt="Desserts" /> -->
+        <h3>Desserts</h3>
+        <p>Sugar, spice, and everything nice. Sweet endings await.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Ricooks. Crafted with taste and love.
+  </footer>
+  <script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.toggle('active');
+  });
+</script>
+
+</body>
+</html>

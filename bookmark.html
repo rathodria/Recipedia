@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bookmarked Recipes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fffaf6;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #b04d3f;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    #clearBtn {
+      display: block;
+      margin: 0 auto 30px;
+      padding: 10px 20px;
+      background-color: #d1495b;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    #clearBtn:hover {
+      background-color: #a73745;
+    }
+
+    .bookmarks-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 0 10px;
+    }
+
+    .bookmark-card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .bookmark-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .bookmark-card h3 {
+      color: #d1495b;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .bookmark-card a {
+      text-decoration: none;
+      color: #8d3e32;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .bookmark-card a:hover {
+      text-decoration: underline;
+    }
+
+    .empty {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #777;
+      margin-top: 40px;
+    }
+
+    /* Mobile-first adjustments */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      #clearBtn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+
+      .bookmark-card h3 {
+        font-size: 1.1rem;
+      }
+
+      .bookmark-card a {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bookmarked Recipes</h1>
+  <button id="clearBtn">Clear All Bookmarks</button>
+  <div id="bookmarks" class="bookmarks-container"></div>
+  <p id="emptyMessage" class="empty"></p>
+
+  <script>
+    const container = document.getElementById("bookmarks");
+    const emptyMessage = document.getElementById("emptyMessage");
+    const clearBtn = document.getElementById("clearBtn");
+
+    function loadBookmarks() {
+      const bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+
+      container.innerHTML = "";
+      if (bookmarks.length === 0) {
+        emptyMessage.textContent = "You haven't bookmarked any recipes yet.";
+        clearBtn.style.display = "none";
+      } else {
+        emptyMessage.textContent = "";
+        clearBtn.style.display = "block";
+
+        bookmarks.forEach(recipe => {
+          const card = document.createElement("div");
+          card.className = "bookmark-card";
+          card.innerHTML = `
+            <h3>${recipe.title}</h3>
+            <a href="${recipe.link}">View Recipe →</a>
+          `;
+          container.appendChild(card);
+        });
+      }
+    }
+
+    clearBtn.addEventListener("click", () => {
+      if (confirm("Are you sure you want to clear all bookmarks?")) {
+        localStorage.removeItem("bookmarkedRecipes");
+        loadBookmarks();
+      }
+    });
+
+    loadBookmarks();
+  </script>
+
+</body>
+</html>

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bookmarked Recipes</title>
+   <link rel="stylesheet" href="style.css" />
   <style>
     * {
       margin: 0;
@@ -109,6 +110,32 @@
   </style>
 </head>
 <body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Recipedia</div>
+
+      <div class="hamburger" id="hamburger">&#9776;</div>
+
+  
+      <div id="mobileNav" class="nav-links-wrapper">
+        <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li class="dropdown">
+            <span class="dropdown-toggle">Recipes ▾</span>
+            <ul class="dropdown-content">
+              <li><a href="indian.html">Indian</a></li>
+              <li><a href="middleeast.html">Middle Eastern</a></li>
+              <li><a href="dessert.html">Desserts</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="bookmark.html">Bookmarks</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
 
   <h1>Bookmarked Recipes</h1>
   <button id="clearBtn">Clear All Bookmarks</button>

@@ -43,12 +43,12 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
       margin-bottom: 30px;
     }
-    .top-image {
+    /* .top-image {
       width: 220px;
       border-radius: 18px;
       display: block;
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.05));
-    }
+    } */
     .recipe-text {
       width: 100%;
       text-align: left;
@@ -75,10 +75,42 @@
       line-height: 1.7;
       color: #5c3e3e;
     }
+    .top-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.05));
+    }
+    .bookmark-btn {
+      background-color: #d1495b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .bookmark-btn:hover {
+      background-color: #a83b4a;
+    }
+
     @media (max-width: 600px) {
       .top-image {
         width: 80%;
       }
+      .recipe-content {
+        padding: 20px;
+      }
+
+      .bookmark-btn {
+        width: 100%;
+      }
+      
     }
   </style>
 </head>
@@ -118,5 +150,24 @@
       </div>
     </section>
   </main>
+  <script>
+    function bookmarkRecipe() {
+      const recipe = {
+        title: "Paneer Tikka Masala",
+        link: window.location.href
+      };
+
+      let bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+      const alreadyBookmarked = bookmarks.some(r => r.link === recipe.link);
+
+      if (!alreadyBookmarked) {
+        bookmarks.push(recipe);
+        localStorage.setItem("bookmarkedRecipes", JSON.stringify(bookmarks));
+        alert("Recipe bookmarked successfully!");
+      } else {
+        alert("This recipe is already bookmarked.");
+      }
+    }
+  </script>
 </body>
 </html>

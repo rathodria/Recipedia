@@ -11,6 +11,7 @@
       background: linear-gradient(to right, #fffaf5, #fef5ef);
       color: #4e3c3c;
     }
+
     .recipe-header {
       background-color: #f8bfa4;
       color: #4e3c3c;
@@ -19,12 +20,14 @@
       font-size: 2.5em;
       font-weight: bold;
     }
+
     .recipe-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px 20px;
     }
+
     .recipe-content {
       background: #fff6f0;
       padding: 30px;
@@ -36,66 +39,108 @@
       flex-direction: column;
       align-items: center;
     }
+
     .photo-wrapper {
       background: #fceae4;
       padding: 20px;
       border-radius: 50%;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
       margin-bottom: 30px;
-     
     }
+
     .top-image {
-      width: 220px;
-      border-radius: 18px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
       display: block;
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.05));
     }
+
+    .bookmark-btn {
+      background-color: #d1495b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .bookmark-btn:hover {
+      background-color: #a83b4a;
+    }
+
     .recipe-text {
       width: 100%;
       text-align: left;
     }
+
     h2 {
       color: #8e3d28;
       margin-top: 0;
       font-size: 1.8em;
     }
+
     h3 {
       margin-bottom: 6px;
       color: #5e403b;
       font-size: 1.1em;
     }
+
     ul, ol {
       margin-top: 5px;
       margin-bottom: 20px;
       padding-left: 25px;
     }
+
     li {
       line-height: 1.6;
     }
+
     p {
       line-height: 1.7;
       color: #5c3e3e;
     }
+
     @media (max-width: 600px) {
       .top-image {
         width: 80%;
+        height: auto;
+      }
+
+      .recipe-content {
+        padding: 20px;
+      }
+
+      .bookmark-btn {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
+
   <header class="recipe-header">Paneer Tikka Masala</header>
+
   <main class="recipe-container">
     <section class="recipe-content">
       <div class="photo-wrapper">
-        <img src="photo/panner.jpeg" alt="Paneer Tikka" class="top-image"style=" width: 200px; height: 200px; border-radius: 50%; object-fit: cover; ">
+        <img src="photo/panner.jpeg" alt="Paneer Tikka" class="top-image">
       </div>
+
+      <button class="bookmark-btn" onclick="bookmarkRecipe()">🔖 Bookmark this Recipe</button>
+
       <div class="recipe-text">
         <h2>Paneer Tikka Masala</h2>
         <p>A classic Indian dish of grilled paneer cubes simmered in rich tomato gravy with aromatic spices.</p>
+
         <h3>🍽️ Serves</h3><p>4</p>
         <h3>⏲️ Preparation Time</h3><p>20 minutes</p>
         <h3>🔥 Cooking Time</h3><p>25 minutes</p>
+
         <h3>🥣 Ingredients</h3>
         <ul>
           <li>200g paneer cubes</li>
@@ -109,6 +154,7 @@
           <li>1/4 cup cream</li>
           <li>Salt to taste</li>
         </ul>
+
         <h3>📝 Preparation</h3>
         <ol>
           <li>Marinate paneer with yogurt, spices, and set aside.</li>
@@ -120,5 +166,26 @@
       </div>
     </section>
   </main>
+
+  <script>
+    function bookmarkRecipe() {
+      const recipe = {
+        title: "Paneer Tikka Masala",
+        link: window.location.href
+      };
+
+      let bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+      const alreadyBookmarked = bookmarks.some(r => r.link === recipe.link);
+
+      if (!alreadyBookmarked) {
+        bookmarks.push(recipe);
+        localStorage.setItem("bookmarkedRecipes", JSON.stringify(bookmarks));
+        alert("Recipe bookmarked successfully!");
+      } else {
+        alert("This recipe is already bookmarked.");
+      }
+    }
+  </script>
+
 </body>
 </html>
